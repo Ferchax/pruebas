@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <input type="text" name="initDate" id="initDate" value="12/07/2018">
+  <input type="text" name="endDate" id="endDate" value="31/07/2018">
+  <button id="btnCalculate">calcular</button>
+  <div id="output"></div>
+  <script>
+    function calculateRestrictDays(initDate, endDate){
+
+      //console.log(initDate);
+      //console.log(endDate);
+
+      const arrInitDate = initDate.split('/');
+      const arrEndDate = endDate.split('/');
+
+      const initDay = Number.parseInt(arrInitDate[0], 10);
+      //console.log("initDay", initDay);
+      const endDay = Number.parseInt(arrEndDate[0], 10);
+      //console.log("endDay", endDay);
+      const month = arrInitDate[1];
+      //console.log("month", month);
+      const year = arrInitDate[2];
+      //console.log("year", year);
+      const addDays = endDay - initDay;
+      //console.log("addDays", addDays);
+      const lengthAddDays = initDay + addDays;
+      //console.log("lengthAddDays", lengthAddDays);
+
+      const dates = [];
+
+      for(let i=initDay;i<=lengthAddDays;i++) {
+        dates.push(`"${year}-${month}-${i}"`);
+      }
+
+      //console.log(dates);
+
+      const output = document.getElementById("output");
+      output.innerHTML = `[${dates.join(", ")}]`;
+    }
+
+    document.getElementById("btnCalculate")
+      .addEventListener("click", function(){
+      calculateRestrictDays(
+      document.getElementById("initDate").value,
+      document.getElementById("endDate").value
+    )}, false);
+  </script>
+</body>
+</html>
