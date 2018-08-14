@@ -34,7 +34,9 @@
       const dates = [];
 
       for(let i=initDay;i<=lengthAddDays;i++) {
-        dates.push(`"${year}-${month}-${i}"`);
+        let day = i;
+        if(day<10) day = `0${i}`;
+        dates.push(`"${year}-${month}-${day}"`);
       }
 
       //console.log(dates);
@@ -44,11 +46,11 @@
     }
 
     document.getElementById("btnCalculate")
-      .addEventListener("click", function(){
+    .addEventListener("click", function(){
       calculateRestrictDays(
-      document.getElementById("initDate").value,
-      document.getElementById("endDate").value
-    )}, false);
+        document.getElementById("initDate").value,
+        document.getElementById("endDate").value
+      )}, false);
   </script>
 </body>
 </html>
